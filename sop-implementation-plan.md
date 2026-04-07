@@ -191,27 +191,27 @@ The implementation should use the intended model assignments below.
 ### Agent model mapping
 
 1. Planner
-   - `codex/gpt-5.4`
+   - `openai/gpt-5.4`
 2. Worker
-   - Primary: `omlx/qwen3-coder`
-   - Fallback and escalation: `minimax/MiniMax-M2.7`
+   - Primary: `omlx/omlx/qwen3-coder`
+   - Fallback and escalation: `minimax-coding-plan/MiniMax-M2.7`
 3. Reviewer
-   - `omlx/qwen3.5-27b8`
+   - `omlx/omlx/qwen3.5-27b8`
 4. QA
-   - `openrouter/minimax/minimax-m2.5:free`
+   - `opencode/minimax-m2.5-free`
 5. Ops
-   - `omlxmini/qwen3.5-9b`
+   - `omlxmini/omlxmini/qwen3.5-9b`
 6. Security
-   - `omlx/qwen3.5-27b8`
+   - `omlx/omlx/qwen3.5-27b8`
 
 ### Routing summary
 
-- Architecture, planning, and escalation-sensitive work: `codex/gpt-5.4`
-- General implementation: `omlx/qwen3-coder`
-- Worker fallback or broader reasoning on implementation stalls: `minimax/MiniMax-M2.7`
-- Review and security: `omlx/qwen3.5-27b8`
-- QA validation: `openrouter/minimax/minimax-m2.5:free`
-- Ops, heartbeat, and summaries: `omlxmini/qwen3.5-9b`
+- Architecture, planning, and escalation-sensitive work: `openai/gpt-5.4`
+- General implementation: `omlx/omlx/qwen3-coder`
+- Worker fallback or broader reasoning on implementation stalls: `minimax-coding-plan/MiniMax-M2.7`
+- Review and security: `omlx/omlx/qwen3.5-27b8`
+- QA validation: `opencode/minimax-m2.5-free`
+- Ops, heartbeat, and summaries: `omlxmini/omlxmini/qwen3.5-9b`
 
 ### Prerequisite verification
 
