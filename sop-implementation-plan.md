@@ -196,20 +196,20 @@ The implementation should use the intended model assignments below.
    - Primary: `omlx/omlx/qwen3-coder`
    - Fallback and escalation: `minimax-coding-plan/MiniMax-M2.7`
 3. Reviewer
-   - `omlx/omlx/qwen3.5-27b8`
+   - `omlx/omlx/qwen3-coder`
 4. QA
    - `opencode/minimax-m2.5-free`
 5. Ops
    - `omlxmini/omlxmini/qwen3.5-9b`
 6. Security
-   - `omlx/omlx/qwen3.5-27b8`
+   - `omlx/omlx/qwen3-coder`
 
 ### Routing summary
 
 - Architecture, planning, and escalation-sensitive work: `openai/gpt-5.4`
 - General implementation: `omlx/omlx/qwen3-coder`
 - Worker fallback or broader reasoning on implementation stalls: `minimax-coding-plan/MiniMax-M2.7`
-- Review and security: `omlx/omlx/qwen3.5-27b8`
+- Review and security: `omlx/omlx/qwen3-coder`
 - QA validation: `opencode/minimax-m2.5-free`
 - Ops, heartbeat, and summaries: `omlxmini/omlxmini/qwen3.5-9b`
 
