@@ -191,26 +191,26 @@ The implementation should use the intended model assignments below.
 ### Agent model mapping
 
 1. Planner
-   - `openai/gpt-5.4`
+   - `omlx/omlx/qwen3.5-35b`
 2. Worker
    - Primary: `omlx/omlx/qwen3-coder`
-   - Fallback and escalation: `minimax-coding-plan/MiniMax-M2.7`
+   - Fallback and escalation: `omlx/omlx/qwen3.5-35b`
 3. Reviewer
    - `omlx/omlx/qwen3-coder`
 4. QA
-   - `opencode/minimax-m2.5-free`
+   - `omlx/omlx/qwen3.5-27b6`
 5. Ops
    - `omlxmini/omlxmini/qwen3.5-9b`
 6. Security
-   - `omlx/omlx/qwen3-coder`
+   - `omlx/omlx/qwen3.5-27b8`
 
 ### Routing summary
 
-- Architecture, planning, and escalation-sensitive work: `openai/gpt-5.4`
+- Architecture, planning, and escalation-sensitive work: `omlx/omlx/qwen3.5-35b`
 - General implementation: `omlx/omlx/qwen3-coder`
-- Worker fallback or broader reasoning on implementation stalls: `minimax-coding-plan/MiniMax-M2.7`
-- Review and security: `omlx/omlx/qwen3-coder`
-- QA validation: `opencode/minimax-m2.5-free`
+- Worker fallback or broader reasoning on implementation stalls: `omlx/omlx/qwen3.5-35b`
+- Review and security: `omlx/omlx/qwen3.5-27b8`
+- QA validation: `omlx/omlx/qwen3.5-27b6`
 - Ops, heartbeat, and summaries: `omlxmini/omlxmini/qwen3.5-9b`
 
 ### Prerequisite verification
@@ -235,6 +235,7 @@ All custom agents should:
    - routing
    - gate enforcement
    - escalation
+   - coordination only; does not directly implement, review, or test
 2. Worker
    - implementation only
    - updates task result and worklog
@@ -259,24 +260,32 @@ All custom agents should:
 
 Commands should orchestrate, not embed too much duplicate policy.
 
+Planner rule:
+- the planner coordinates and delegates
+- execution commands should run on the appropriate subagent rather than having the planner perform the action itself
+
 ### Main commands
 
 1. `/route`
-   - classify task
-   - select model and escalation notes
+    - classify task
+    - select model and escalation notes
 2. `/start-task`
-   - create task folder from templates inside current repo
+    - create task folder from templates inside current repo via an execution subagent
 3. `/start-hotfix`
-   - create hotfix task structure
-   - minimal-change lane
+    - create hotfix task structure via an execution subagent
+    - minimal-change lane
 4. `/heartbeat`
    - summarize task status from repo task artifacts
 5. `/security-scan`
-   - run or coordinate security review flow
-6. `/review`
-   - review current task or current changes
-7. `/bootstrap-sop`
-   - scaffold repo-local SOP assets into the current repository
+     - run or coordinate security review flow
+ 6. `/sop-review`
+      - preferred automated review command via reviewer
+ 7. `/review`
+      - compatibility shim for the old command name
+ 8. `/bootstrap-sop`
+      - scaffold repo-local SOP assets into the current repository via an execution subagent
+ 9. `/run-task-loop`
+      - planner-led workflow command that delegates implementation, review, and QA in sequence
 
 ### Most important command
 
