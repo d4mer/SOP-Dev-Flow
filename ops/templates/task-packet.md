@@ -6,6 +6,8 @@
 - Priority:
 - Deadline:
 - Risk: low / medium / high
+- Spec required: yes / no
+- Spec path:
 - Owner model:
 - Reviewer model:
 - QA model:
@@ -22,6 +24,10 @@
 1.
 2.
 3.
+
+## Spec Gate
+- Status: not needed / draft / approved
+- Approval notes:
 
 ## Test Plan
 - Commands:

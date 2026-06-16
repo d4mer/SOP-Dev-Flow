@@ -6,8 +6,9 @@
    - `~/.opencode/bin/opencode serve --hostname 127.0.0.1 --port <PORT>`
 2. Use `/start-task` or `/start-hotfix` to create task artifacts.
 3. Fill the task packet before execution.
-4. Prefer `/run-task-loop <task-directory>` for planner-led delegated execution.
-5. Prefer `/sop-review` over `/review` for automated review.
+4. For medium-risk, high-risk, or behavior-changing work, fill `spec.md` and approve it before implementation.
+5. Prefer `/run-task-loop <task-directory>` for planner-led delegated execution.
+6. Prefer `/sop-review` over `/review` for automated review.
 
 ## Task Directory Input
 
@@ -23,6 +24,13 @@
 - QA: verification
 - Security: security review when needed
 - Ops: heartbeat and status
+
+## Spec-Driven Development Rule
+
+- Use packet-only mode for trivial documentation or low-risk housekeeping.
+- Use packet plus `spec.md` for medium-risk, high-risk, or behavior-changing tasks.
+- Treat `spec.md` as the approved behavior and design contract; update it when implementation changes the intended behavior.
+- Keep tests aligned to the requirements listed in `spec.md`.
 
 ## Operational Notes
 

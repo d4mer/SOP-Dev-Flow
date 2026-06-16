@@ -18,6 +18,7 @@ fi
 mkdir -p "$DIR"
 cp ops/templates/incident.md "$DIR/incident.md"
 cp ops/templates/task-packet.md "$DIR/packet.md"
+cp ops/templates/spec.md "$DIR/spec.md"
 cp ops/templates/review-form.md "$DIR/review.md"
 cp ops/templates/result.md "$DIR/result.md"
 
