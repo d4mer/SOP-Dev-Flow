@@ -1,6 +1,6 @@
 # SOP Dev Flow
 
-Repo-local SOP scaffold for agentic software delivery with planner-led execution, task packets, review gates, QA handoff, and lightweight spec-driven development.
+Repo-local SOP scaffold for planner-led agentic software delivery with researcher gates, task packets, review controls, QA handoff, and lightweight spec-driven development.
 
 ## What This Repo Is
 
@@ -8,6 +8,7 @@ This repository captures a practical operating system for AI-assisted software w
 
 It defines:
 - a planner-led multi-agent delivery flow
+- a pre-worker research gate for non-trivial implementation work
 - repo-local task artifacts and templates
 - review, QA, security, and rollback gates
 - lightweight spec-driven development for non-trivial work
@@ -17,7 +18,7 @@ It defines:
 
 Core execution flow:
 
-`Planner -> Worker -> Reviewer -> Security if needed -> QA -> Ops`
+`Planner -> Researcher when needed -> Worker -> Reviewer -> Security if needed -> QA -> Ops -> Planner closeout`
 
 For trivial work:
 - use `packet.md`
@@ -27,12 +28,17 @@ For medium-risk, high-risk, or behavior-changing work:
 - approve the spec before implementation
 - keep tests mapped to spec requirements
 
+For implementation, hotfix, framework/API, build/tooling, persistence, privacy, security, or regression work:
+- run a researcher gate before worker handoff
+- incorporate research-backed constraints into the packet, spec, or worker prompt
+
 ## Repository Layout
 
 ```text
 ops/
   sop-v1.1.md              Core SOP
-  routing-rules.md         Model routing and task type guidance
+  routing-rules.md         Detailed role, gate, and research routing guidance
+  README.md                Ops-specific workflow reference
   operator-guide.md        Human/operator usage notes
   templates/               Task, spec, review, result, and incident templates
   scripts/                 Task creation and heartbeat helpers
@@ -46,6 +52,7 @@ ops/
 - `ops/templates/review-form.md`: reviewer checklist including spec conformance and test traceability
 - `ops/templates/result.md`: final task outcome and rollback note
 - `ops/templates/incident.md`: hotfix incident tracking
+- `ops/routing-rules.md`: planner-only, research, worker, review, QA, security, and ops gate policy
 
 ## Scripts
 
@@ -57,14 +64,17 @@ ops/
 
 1. Start a fresh standalone OpenCode server.
 2. Create a task with `start-task.sh` or a hotfix with `start-hotfix.sh`.
-3. Fill `packet.md`.
+3. Fill `packet.md` in the main assistant context.
 4. If the work is non-trivial, fill and approve `spec.md`.
-5. Run the planner-led task loop.
-6. Review, validate, and record results before merge.
+5. For substantial implementation work, run the researcher gate before worker handoff.
+6. Run the planner-led task loop.
+7. Review, validate, and record results before merge.
 
 ## Design Principles
 
 - planner coordinates, but does not directly implement
+- planning stays in the main assistant context; it is not delegated to a planner subagent
+- external research is routed through SearXNG before worker handoff when current guidance matters
 - templates keep work inspectable and repeatable
 - tests are the executable source of truth
 - specs are lightweight and only required when justified by task risk or complexity

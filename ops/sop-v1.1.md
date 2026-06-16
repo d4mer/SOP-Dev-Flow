@@ -20,11 +20,17 @@
 8. Escalation trigger
 9. Budget
 
+## Detailed Routing
+
+- Detailed gate ownership, research policy, and git closeout rules live in `ops/routing-rules.md`.
+- Planning stays in the main assistant context and is not delegated to a planner subagent.
+
 ## Execution Flow
-Planner -> Worker -> Reviewer -> Security if needed -> QA -> Ops
+Planner -> Researcher when required -> Worker -> Reviewer -> Security if needed -> QA -> Ops -> Planner closeout
 
 ## Quality Gates
 - acceptance criteria met
+- approved `spec.md` present when required
 - tests updated where behavior changed
 - reviewer sign-off present
 - security scan passed for medium/high risk
