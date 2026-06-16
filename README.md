@@ -60,6 +60,23 @@ ops/
 - `ops/scripts/start-hotfix.sh <slug>`: create a hotfix folder with incident, packet, spec, review, and result files
 - `ops/scripts/heartbeat-report.sh`: report blocked tasks, ready-for-review tasks, and active hotfix incidents
 
+## New Projects
+
+Use `NEW_PROJECT_QUICKSTART.md` to apply this workflow to a fresh repository.
+
+Preferred path:
+
+1. Open the target repo in OpenCode.
+2. Run `/bootstrap-sop`.
+3. Review the scaffolded `ops/` assets.
+4. Create a smoke-test task and verify the flow.
+
+Fallback path:
+
+- copy the `ops/` assets into the target repo
+- adjust `routing-rules.md` and `operator-guide.md`
+- run `ops/scripts/start-task.sh TEST-001 bootstrap-smoke`
+
 ## Recommended Usage
 
 1. Start a fresh standalone OpenCode server.
