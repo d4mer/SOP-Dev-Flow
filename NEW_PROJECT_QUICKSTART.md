@@ -1,6 +1,6 @@
 # New Project Quickstart
 
-Use this checklist when you want to apply the SOP Dev Flow workflow to a fresh repository.
+Use this checklist when you want to apply the SOP Dev Flow workflow to a fresh repository or retrofit it into an existing one.
 
 ## Recommended Path
 
@@ -34,6 +34,39 @@ Then do the following:
 4. Run `ops/scripts/start-task.sh TEST-001 bootstrap-smoke`.
 5. Confirm the new task folder contains `packet.md`, `spec.md`, `worklog.md`, `review.md`, and `result.md`.
 6. Delete the smoke-test task or convert it into the first real task.
+
+## Existing Project Rollout
+
+For an existing repository, do not try to convert every open thread of work at once. Add the workflow in layers:
+
+1. Scaffold `ops/`, `ops/templates/`, and `ops/scripts/` into the existing repo.
+2. Update `ops/routing-rules.md` with project-specific constraints, sensitive directories, and build/test expectations.
+3. Update `ops/operator-guide.md` with the real commands maintainers use in that repo.
+4. Create one bootstrap verification task with `ops/scripts/start-task.sh MIGRATE-001 sop-rollout-smoke`.
+5. Use the workflow first on one low-risk real task.
+6. After one successful pass, require packets for all non-trivial work.
+7. After that, require `spec.md` for medium-risk, high-risk, or behavior-changing work.
+8. Finally, enforce researcher, reviewer, security, QA, and ops closeout gates consistently.
+
+## Existing Project Migration Checklist
+
+- identify generated or forbidden paths that should never be staged
+- document the repo's real test commands and smoke commands
+- document any framework/API areas that should always trigger researcher-first handoff
+- define when `spec.md` is mandatory versus optional
+- start with one pilot task before applying the flow to all active work
+
+## Existing Project First Task
+
+Start each existing-project rollout with a migration verification task:
+
+- Title: verify SOP rollout in existing repo
+- Goal: prove the SOP assets fit the repo without blocking ongoing development
+- Acceptance criteria:
+  1. task scaffolding works in the existing repo
+  2. routing rules reflect the repo's actual constraints
+  3. build/test commands are recorded
+  4. one low-risk task completes successfully through the new flow
 
 ## Minimum Repo Conventions
 

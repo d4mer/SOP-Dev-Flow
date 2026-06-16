@@ -60,9 +60,9 @@ ops/
 - `ops/scripts/start-hotfix.sh <slug>`: create a hotfix folder with incident, packet, spec, review, and result files
 - `ops/scripts/heartbeat-report.sh`: report blocked tasks, ready-for-review tasks, and active hotfix incidents
 
-## New Projects
+## New And Existing Projects
 
-Use `NEW_PROJECT_QUICKSTART.md` to apply this workflow to a fresh repository.
+Use `NEW_PROJECT_QUICKSTART.md` to apply this workflow to a fresh repository or roll it into an existing one.
 
 Preferred path:
 
@@ -76,6 +76,13 @@ Fallback path:
 - copy the `ops/` assets into the target repo
 - adjust `routing-rules.md` and `operator-guide.md`
 - run `ops/scripts/start-task.sh TEST-001 bootstrap-smoke`
+
+Existing project rollout:
+
+- scaffold `ops/` assets into the repo
+- tune routing rules and operator guidance to the repo's real constraints
+- run one migration smoke task
+- adopt the workflow on one low-risk real task before broad rollout
 
 ## Recommended Usage
 
