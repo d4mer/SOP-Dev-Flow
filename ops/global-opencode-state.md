@@ -5,12 +5,12 @@ This file records the current global OpenCode workflow state that lives outside 
 ## Current Agent Models
 
 - Planner: `openai/gpt-5.4`
-- Worker: `omlx/qwen3-coder`
-- Worker fallback: `minimax-coding-plan/MiniMax-M2.7`
-- Reviewer: `omlx/qwen3.5-27b`
+- Planner fallback: `minimax-coding-plan/MiniMax-M2.7`
+- Worker: `omlx/qwen3.6-35b`
+- Reviewer: `openai/gpt-5.4`
 - QA: `opencode/minimax-m2.5-free`
 - Ops: `omlxmini/qwen3.5-9b`
-- Security: `omlx/qwen3.5-27b`
+- Security: `omlx/qwen3.6-35b`
 
 ## Current Command Roles
 

@@ -191,25 +191,26 @@ The implementation should use the intended model assignments below.
 ### Agent model mapping
 
 1. Planner
-   - `openai/gpt-5.4`
-2. Worker
-   - Primary: `omlx/qwen3-coder`
+   - Primary: `openai/gpt-5.4`
    - Fallback and escalation: `minimax-coding-plan/MiniMax-M2.7`
+2. Worker
+   - `omlx/qwen3.6-35b`
 3. Reviewer
-   - `omlx/qwen3.5-27b`
+   - `openai/gpt-5.4`
 4. QA
    - `opencode/minimax-m2.5-free`
 5. Ops
    - `omlxmini/qwen3.5-9b`
 6. Security
-   - `omlx/qwen3.5-27b`
+   - `omlx/qwen3.6-35b`
 
 ### Routing summary
 
 - Architecture, planning, and escalation-sensitive work: `openai/gpt-5.4`
-- General implementation: `omlx/qwen3-coder`
-- Worker fallback or broader reasoning on implementation stalls: `minimax-coding-plan/MiniMax-M2.7`
-- Review and security: `omlx/qwen3.5-27b`
+- Planner fallback or broader reasoning on planning stalls: `minimax-coding-plan/MiniMax-M2.7`
+- General implementation: `omlx/qwen3.6-35b`
+- Review: `openai/gpt-5.4`
+- Security: `omlx/qwen3.6-35b`
 - QA validation: `opencode/minimax-m2.5-free`
 - Ops, heartbeat, and summaries: `omlxmini/qwen3.5-9b`
 

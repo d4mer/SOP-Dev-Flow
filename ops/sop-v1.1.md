@@ -2,12 +2,12 @@
 
 ## Team Roles + Model Mapping
 - Planner: openai/gpt-5.4
-- Worker: minimax-coding-plan/MiniMax-M2.7
-- Worker fallback: openai/gpt-5.4
+- Planner fallback: minimax-coding-plan/MiniMax-M2.7
+- Worker: omlx/qwen3.6-35b
 - Reviewer: openai/gpt-5.4
 - QA: opencode/minimax-m2.5-free
-- Ops: omlxmini/omlxmini/qwen3.5-9b
-- Security: openai/gpt-5.4
+- Ops: omlxmini/qwen3.5-9b
+- Security: omlx/qwen3.6-35b
 
 ## Required Packet Fields
 1. Task ID
